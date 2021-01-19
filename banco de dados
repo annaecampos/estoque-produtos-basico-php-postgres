@@ -1,0 +1,54 @@
+create table pessoa (
+	id serial NOT NULL PRIMARY KEY,
+	nome character varying(250) not null,
+	razaosocial character varying(250),
+	nomefantasia character varying(250),
+	telefone character varying(30),
+	cpf character varying(30),
+	cnpj character varying(30),
+	email character varying(250),
+	login character varying(30),
+	senha character varying(30),
+	tipopessoa int NOT NULL
+)
+
+
+create table unidademedida (
+	id serial NOT NULL PRIMARY KEY,
+	nome character varying(250) not null
+)
+
+create table produto (
+id serial primary key not null,
+	nome character varying(250) not null,
+	descricao character varying(250),
+	idunidademedida integer references unidademedida(id) not null
+
+)
+
+create table entrada (
+id serial primary key not null,
+	nfe character varying(250),
+	linksei character varying(250),
+	data date not null,
+	observacao character varying(500)
+	
+)
+
+create table entradaproduto (
+id serial primary key not null,
+	identrada integer references entrada(id) not null,
+	idproduto integer references produto(id) not null,
+	quantidade decimal(10,2) not null
+
+)
+
+create table setor (
+	id serial NOT NULL PRIMARY KEY,
+	nome character varying(250) not null
+)
+
+create table tipoproduto (
+	id serial NOT NULL PRIMARY KEY,
+	nome character varying(250) not null
+)
